@@ -1,0 +1,46 @@
+% extends "base.html" %}
+{% load course_display %}
+{% block content %}
+<h1>Create Group</h1>
+{% if user %}
+<form action="{% url groups.views.submit course_slug=course.slug
+method="post">
+<div class="group_name">
+<label for="name">Group Name </label>
+<input type="text" name="GroupName" id="name" />
+</div>
+<div class = "group_for_semester">
+<h2>Group is for whole semester?</h2>
+{{ groupForSemester.selected }}
+<label for="id_selected">This group will stay together for \
+any newly-created activities in this course</label>
+</div>
+<div class = "datatable_container">
+<h2>Activities for this Group</h2>
+<table class="display" id="activities">
+<thead>
+<tr>
+<th>Selected</th>
+<th>Title</th>
+<th>Percent</th>
+<th>Due Date</th>
+</tr>
+</thead>
+<tbody>
+{% for act in activityList %}
+<tr>
+<td>{{ act.activityForm.selected }}</td>
+<td>{{ act.name }}</td>
+<td>{{ act.percent }}</td>
+<td>{{ act.due_date }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<div><input class = ’submit’ type="submit" value="create"/></div>
+</form>
+{% else %}
+<p> Student does not exist </p>
+{% endif %}
+{% endblock content %}

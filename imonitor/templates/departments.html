@@ -1,0 +1,12 @@
+<h1>{{ department.name }}</h1>
+
+{% for project in name.projects_set.all %}
+    <h2>{{ projects.name }}</h2>
+        <ul>
+            {% for membership in projects.membership_set.all %}
+			<li>
+			   {{ membership.member }} | {{ membership.role }}
+			</li>
+			{% endfor %}
+        </ul>
+{% endfor %}
