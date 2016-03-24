@@ -37,7 +37,7 @@ function PolygonStyle(feature){
     };
     
 
-$.getJSON("data/neighborhoods.geojson",function(hoodData){
+$.getJSON("https://github.com/ultigeo/projectrack/blob/master/projtrakr-map/data/neighborhoods.geojson",function(hoodData){
   L.geoJson( hoodData,{
     style: PolygonStyle,
     onEachFeature: function( feature, layer ){
@@ -51,7 +51,7 @@ var ratIcon = L.icon({
     iconSize: [60,50]
   });
 // load GeoJSON from an external file
-$.getJSON("data/points.geojson",function(data){
+$.getJSON("https://github.com/ultigeo/projectrack/blob/master/projtrakr-map/data/points.geojson",function(data){
   var points=L.geoJson(data,{
     pointToLayer: function(feature,latlng){
         onEachFeature: onEachFeature;
